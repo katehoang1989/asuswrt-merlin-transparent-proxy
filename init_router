@@ -5,18 +5,18 @@
 
 set -e
 
-if [ ! -d /tmp/mnt/sda1/entware.bak ]; then
-    echo 'not exist /tmp/mnt/sda1/entware.bak, init_router not continuing.'
+if [ ! -d /tmp/mnt/opt/entware.bak ]; then
+    echo 'not exist /tmp/mnt/opt/entware.bak, init_router not continuing.'
     exit
 fi
 
 [ -e /opt/etc/toggle_proxy.sh ] && sh /opt/etc/toggle_proxy.sh disable
 
 date=$(date '+%Y-%m-%d_%H-%M-%S')
-mv /tmp/mnt/sda1/entware /tmp/mnt/sda1/entware_bak_$date
+mv /tmp/mnt/opt/entware /tmp/mnt/opt/entware_bak_$date
 
 # recreate a new entware directory.
-cp -a /tmp/mnt/sda1/entware.bak /tmp/mnt/sda1/entware
+cp -a /tmp/mnt/opt/entware.bak /tmp/mnt/opt/entware
 
 rm -f /opt/var/lock/opkg.lock
 
